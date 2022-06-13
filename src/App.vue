@@ -1,5 +1,9 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
-  <div>Hello</div>
+  <Hello name="laddish"/>
 </template>
 
 <style>
