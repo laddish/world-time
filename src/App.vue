@@ -3,13 +3,15 @@
 </script>
 
 <template>
-  <Hello name="laddish"/>
+  <div>
+    <TimezoneSearch />
+  </div>
 </template>
 
 <style>
-html{
-  background:#222;
-  color:white;
+html {
+  background: #222;
+  color: white;
   color-scheme: dark;
 }
 </style>
