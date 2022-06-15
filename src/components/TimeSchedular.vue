@@ -3,15 +3,10 @@
 </script>
 
 <template>
-  <div>
-    123
+  <div p4>
+    <pre>
+      {{ zones }}
+    </pre>
   </div>
 </template>
 
-<style>
-html {
-  background: #222;
-  color: white;
-  color-scheme: dark;
-}
-</style>

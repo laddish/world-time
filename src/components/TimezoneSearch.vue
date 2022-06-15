@@ -25,17 +25,15 @@ function add(t: Timezone) {
   <div class="relative">
     <input
       v-model="input" type="text"
-      text-black
       placeholder="Search timezone..."
-      px2
-      py1
+      p="x3 y2"
+      text-xl
       w-full
-      text-white
-      border="~ gray/15 rounded"
+      border="~ base rounded"
       bg-transparent
     >
 
-    <div v-show="input" absolute top-full bg-gray-900 left-0 right-0>
+    <div v-show="input" absolute top-full bg-base left-0 right-0>
       <button
         v-for="i of searchResult"
         :key="i.refIndex" flex gap2
@@ -52,10 +50,3 @@ function add(t: Timezone) {
   </div>
 </template>
 
-<style>
-html {
-  background: #222;
-  color: white;
-  color-scheme: dark;
-}
-</style>

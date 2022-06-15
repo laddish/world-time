@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div border="b gray/15" p2>
+  <div border="b base" p2>
     <TimezoneSearch />
     <TimeSchedular />
   </div>
