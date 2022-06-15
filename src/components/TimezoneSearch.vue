@@ -9,7 +9,7 @@ const fuse = new Fuse(timezones, {
 
 let index = $ref(0)
 let input = $ref('')
-const searchResult = computed(() => {
+const searchResult = $computed(() => {
   return fuse.search(input)
   // return timezone.filter(i => i.utc.find(u => u.includes(input.value)))
 })
@@ -18,6 +18,19 @@ function add(t: Timezone) {
   addToTimeZone(t)
   input = ''
   index = 0
+}
+
+function onKeyDown(e: KeyboardEvent) {
+  if (e.key === 'Enter') {
+    if (searchResult.length > 0)
+      add(searchResult[index].item)
+  }
+  else if (e.key === 'ArrowUp') {
+    index = (index - 1 + searchResult.length) % searchResult.length
+  }
+  else if (e.key === 'ArrowDown') {
+    index = (index + 1 + searchResult.length) % searchResult.length
+  }
 }
 </script>
 
@@ -31,20 +44,28 @@ function add(t: Timezone) {
       w-full
       border="~ base rounded"
       bg-transparent
+      @keydown="onKeyDown"
     >
 
-    <div v-show="input" absolute top-full bg-base left-0 right-0>
+    <div
+      v-show="input"
+      absolute
+      top-full
+      bg-base
+      p1
+      border="~ base rounded"
+      left-0 right-0
+      max-h-100
+      overflow-auto
+    >
       <button
-        v-for="i of searchResult"
+        v-for="i, idx of searchResult"
         :key="i.refIndex" flex gap2
+        block w-full
+        :class="idx === index ? 'bg-gray:5' : ''"
         @click="add(i.item)"
       >
-        <div font-mono w-10 text-right>
-          {{ i.item.offset }}
-        </div>
-        <div>
-          {{ i.item.name }}
-        </div>
+        <TimezoneItem :timezone="i.item" />
       </button>
     </div>
   </div>
