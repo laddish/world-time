@@ -14,6 +14,11 @@ export default defineConfig({
       imports: [
         'vue',
       ],
+      dirs: [
+        './src/composables',
+      ],
+      // vue specific
+      vueTemplate: true,
     }),
     UnoCSS(
       {

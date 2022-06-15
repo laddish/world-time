@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Fuse from 'fuse.js'
-import { timezones } from '../composables/data'
-import { addToTimeZone, zones } from '../composables/state'
 import type { Timezone } from '~/types'
+
 const fuse = new Fuse(timezones, {
   keys: ['name'],
   threshold: 0.3,
@@ -14,8 +13,6 @@ const searchResult = computed(() => {
   return fuse.search(input.value)
   // return timezone.filter(i => i.utc.find(u => u.includes(input.value)))
 })
-
-function onEnter() { }
 
 function add(t: Timezone) {
   addToTimeZone(t)
@@ -36,7 +33,6 @@ function add(t: Timezone) {
       text-white
       border="~ gray/15 rounded"
       bg-transparent
-      @keydown.enter="onEnter"
     >
 
     <div v-show="input" absolute top-full bg-gray-900 left-0 right-0>
