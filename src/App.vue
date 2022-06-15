@@ -9,6 +9,7 @@ import DarkSwitcherVue from './components/DarkSwitcher.vue'
       border="~ base" m2 bg-white
       bg-base
       shadow
+      ml8
     >
       <ActionBar />
     </div>
