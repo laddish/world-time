@@ -2,6 +2,7 @@
 import Fuse from 'fuse.js'
 import { timezones } from '../composables/data'
 import { addToTimeZone, zones } from '../composables/state'
+import type { Timezone } from '~/types'
 const fuse = new Fuse(timezones, {
   keys: ['name'],
   threshold: 0.3,
@@ -15,20 +16,43 @@ const searchResult = computed(() => {
 })
 
 function onEnter() { }
+
+function add(t: Timezone) {
+  addToTimeZone(t)
+  input.value = ''
+  index.value = 0
+}
 </script>
 
 <template>
-  <input v-model="input" type="text" text-black @keydown.enter="onEnter">
+  <div class="relative">
+    <input
+      v-model="input" type="text"
+      text-black
+      placeholder="Search timezone..."
+      px2
+      py1
+      w-full
+      text-white
+      border="~ gray/15 rounded"
+      bg-transparent
+      @keydown.enter="onEnter"
+    >
 
-  <div>
-    <button v-for="i of searchResult" :key="i.refIndex" flex gap2 @click="addToTimeZone(i.item)">
-      <div font-mono w-10 text-right>
-        {{ i.item.offset }}
-      </div>
-      <div>
-        {{ i.item.name }}
-      </div>
-    </button>
+    <div v-show="input" absolute top-full bg-gray-900 left-0 right-0>
+      <button
+        v-for="i of searchResult"
+        :key="i.refIndex" flex gap2
+        @click="add(i.item)"
+      >
+        <div font-mono w-10 text-right>
+          {{ i.item.offset }}
+        </div>
+        <div>
+          {{ i.item.name }}
+        </div>
+      </button>
+    </div>
   </div>
 </template>
 

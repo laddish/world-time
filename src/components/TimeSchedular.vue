@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { zones } from './composables/state'
+
 </script>
 
 <template>
-  <div border="~ gray/20" m2>
-    <ActionBar />
-    <pre>
-      {{ zones }}
-    </pre>
+  <div>
+    123
   </div>
 </template>
 
