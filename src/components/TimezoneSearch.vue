@@ -42,6 +42,7 @@ function onKeyDown(e: KeyboardEvent) {
       p="x3 y2"
       text-xl
       w-full
+
       border="~ base rounded"
       bg-transparent
       @keydown="onKeyDown"
@@ -52,7 +53,9 @@ function onKeyDown(e: KeyboardEvent) {
       absolute
       top-full
       bg-base
-      p1
+
+      shadow
+      z-1
       border="~ base rounded"
       left-0 right-0
       max-h-100
@@ -62,6 +65,7 @@ function onKeyDown(e: KeyboardEvent) {
         v-for="i, idx of searchResult"
         :key="i.refIndex" flex gap2
         block w-full
+        px2
         :class="idx === index ? 'bg-gray:5' : ''"
         @click="add(i.item)"
       >
