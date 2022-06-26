@@ -63,7 +63,6 @@ function isNight(h: number) {
             v-else
             text-xs
             text-center
-            text-cyan6
           >
             {{ format(now.value, 'MMM') }}
             {{ format(now.value, 'dd') }}
