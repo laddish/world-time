@@ -5,11 +5,11 @@ const { timezone } = defineProps<{
 }>()
 
 const state = $computed(() => timezone.name.split('/')[0].replace(/_/g, ' '))
-const city = $computed(() => timezone.name.split('/')[1].replace(/_/g, ' '))
+const city = $computed(() => timezone.name.split('/')[1]?.replace(/_/g, ' ') || '')
 
 const formatter = new Intl.DateTimeFormat('en-US', {
   timeZone: timezone.name,
-  hour12: false,
+  // hour12: false,
   hour: 'numeric',
   minute: 'numeric',
   // second: 'numeric',
@@ -23,7 +23,7 @@ const time = $computed(() => formatter.format(now.value))
 </script>
 
 <template>
-  <button flex gap2 py1 w-full>
+  <div flex gap2 py1 w-full flex-wrap>
     <div font-bold w-8 ma op80>
       {{ offset }}
     </div>
@@ -40,5 +40,6 @@ const time = $computed(() => formatter.format(now.value))
     <div tabular-nums>
       {{ time }}
     </div>
-  </button>
+    <slot />
+  </div>
 </template>

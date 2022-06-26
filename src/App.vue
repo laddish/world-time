@@ -6,10 +6,11 @@ import DarkSwitcherVue from './components/DarkSwitcher.vue'
   <div text-sans bg-canvas h-screen>
     <NavBar />
     <div
-      border="~ base" m2 bg-white
+      border="~ base"
+      mx5 bg-white
       bg-base
       shadow
-      ml8
+      ml5
     >
       <ActionBar />
     </div>

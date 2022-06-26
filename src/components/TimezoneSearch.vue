@@ -42,7 +42,6 @@ function onKeyDown(e: KeyboardEvent) {
       p="x3 y2"
       text-xl
       w-full
-
       border="~ base rounded"
       bg-transparent
       @keydown="onKeyDown"

@@ -1,12 +1,13 @@
 {
-  "name": "world-time ",
+  "name": "world-time",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "preview": "vite preview --port 4173",
     "build": "vite build"
   },
   "dependencies": {
+    "date-fns": "^2.28.0",
     "fuse.js": "^6.6.2",
     "timezones.json": "^1.6.1",
     "vue": "^3.2.36"
