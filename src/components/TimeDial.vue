@@ -44,7 +44,7 @@ function isNight(h: number) {
           v-for="i in day"
           :key="i"
           border="base"
-          flex="~ col none "
+          flex="~ col none"
           justify-center
           items-center
           w7 h8
@@ -63,6 +63,7 @@ function isNight(h: number) {
             v-else
             text-xs
             text-center
+            leading-1em
           >
             {{ format(now.value, 'MMM') }}
             {{ format(now.value, 'dd') }}

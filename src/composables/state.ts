@@ -8,7 +8,7 @@ export const zoneNames = useStorage<string[]>('world-time-zones', [])
 
 export const currentZone = ref(userTimezone)
 
-export const currentOffset = ref(userTimezone)
+export const currentOffset = ref(timezones.find(i => i.name === currentZone.value).offset)
 
 export const zones = computed(() => zoneNames.value.map(name => timezones.find(i => i.name === name),
 ))

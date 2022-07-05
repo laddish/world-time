@@ -16,7 +16,12 @@ const formatter = new Intl.DateTimeFormat('en-US', {
   // timeZoneName: 'short',
 })
 
-const offset = $computed(() => timezone.offset > 0 ? `+${timezone.offset}` : timezone.offset)
+// const offset = $computed(() => timezone.offset > 0 ? `+${timezone.offset}` : timezone.offset)
+
+const offset = $computed(() => {
+  const offset = timezone.offset - currentOffset.value
+  return offset > 0 ? `+${offset}` : offset
+})
 
 // const time = $computed(() => now.value.toLocaleTimeString('en-US', { timeZone: timezone.name }))
 const time = $computed(() => formatter.format(now.value))
@@ -24,7 +29,10 @@ const time = $computed(() => formatter.format(now.value))
 
 <template>
   <div flex gap2 py1 w-full flex-wrap>
-    <div font-bold w-8 ma op80>
+    <div
+      font-bold w-8 ma op80 text-center
+      :title="`${timezone.offset} GMT`"
+    >
       {{ offset }}
     </div>
     <div flex="~ col" text-left flex-auto>
