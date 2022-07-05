@@ -19,7 +19,7 @@ const formatter = new Intl.DateTimeFormat('en-US', {
 // const offset = $computed(() => timezone.offset > 0 ? `+${timezone.offset}` : timezone.offset)
 
 const offset = $computed(() => {
-  const offset = timezone.offset - currentOffset.value
+  const offset = timezone.offset - homeOffset.value
   return offset > 0 ? `+${offset}` : offset
 })
 
